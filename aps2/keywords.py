@@ -5,8 +5,8 @@ ca = certifi.where()
 # criando conexao com o banco de dados
 client = pymongo.MongoClient("mongodb+srv://nlp:nlphuehue@manga.9pvhp.mongodb.net/manga?retryWrites=true&w=majority", tlsCAFile=ca)
 db = client.nlp
-manga = db.manga # {"_id": id, "title": title, "summary": manga summary, "keywords": [keyword, keyword, keyword]}
-keywords = db.keywords # {"_id": id, "keyword": (keyword, [title, title, title])}
+manga = db.manga # {"_id": id, "title": title, "summary": manga summary, "keywords": {keyword: tf, keyword: tf, keyword: tf}}
+keywords = db.keywords # {"_id": id, "keyword": (keyword, [title + ": " + summary, title + ": " + summary, title + ": " + summary])}
 
 def invert_list(dic):
     inverted_dic = {}
