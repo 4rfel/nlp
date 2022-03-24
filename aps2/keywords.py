@@ -1,4 +1,3 @@
-from ast import keyword
 import pymongo, certifi
 
 ca = certifi.where()
