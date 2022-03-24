@@ -7,7 +7,7 @@ from crawler import WebCrawler
 initial_url = "https://mangaclash.com/"
 
 # Configurando o web crawler.
-settings = Settings(values={"LOG_ENABLED": "True", "LOG_LEVEL": "WARNING", "DEPTH_LIMIT": "10"})
+settings = Settings(values={"LOG_ENABLED": "True", "LOG_LEVEL": "WARNING", "DEPTH_LIMIT": "5"})
 # Setando as configuracoes do crawler.
 process = CrawlerProcess(settings=settings)
 # Setando o crawler.

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador</title>
+</head>
+<body>
+
+<h1>Nova busca</h1>
+<FORM action="/" method="get">
+<INPUT type="text" name="termos"><br />
+<INPUT type="submit">
+</FORM>
+
+{% if termos %}
+<h1>Resultados da busca</h1>
+<h2>Termos: {{termos}}</h2>
+
+{% for info in results %}
+<div style="padding: 10px; background-color:#909592; margin: 20px">
+    <p style="font-size: 24px">{{ info }}</p>
+</div>
+{% endfor %}
+
+{% endif %}
+</body>
+</html>

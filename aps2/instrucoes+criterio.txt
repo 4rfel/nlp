@@ -1,0 +1,8 @@
+EXECUCAO:
+para executar basta esta na pasta da aps, setar o FLASK_APP e dar flask run
+
+CRITERIO DE ORDENACAO:
+o criterio de ordenacao foi a quantidade de vezes que a keyword procurada foi encontrada na descricao e titulo do manga
+
+
+o arquivo keywords.py foi utilizado para gerar a lista invertida e salvar eles num mongodb

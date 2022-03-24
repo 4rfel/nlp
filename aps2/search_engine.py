@@ -1,9 +1,14 @@
-import numpy as np
+import pymongo, certifi
 
 class SearchEngine:
-    def __init__(self, inverted_keywords, min_distance=10):
-        self.inverted_keywords = inverted_keywords
+    def __init__(self, min_distance=100):
         self.min_distance = min_distance
+        # pegar um certificado para conseguir acessar o banco de dados
+        ca = certifi.where()
+        # criando conexao com o banco de dados
+        client = pymongo.MongoClient("mongodb+srv://nlp:nlphuehue@manga.9pvhp.mongodb.net/manga?retryWrites=true&w=majority", tlsCAFile=ca)
+
+        self.db = client.nlp.keywords
 
     def levenshtein_distance_(self, s1, s2, n, max_depth):
         if n > max_depth:
@@ -20,19 +25,25 @@ class SearchEngine:
         return self.levenshtein_distance_(s1, s2, 0, max_depth)
 
     def search(self, query):
-        if (query in self.inverted_keywords):
-            # if the keyword is in the inverted_keywords_list, then return the list of files that contain that keyword
-            return self.inverted_keywords[query]
+        query = query.lower()
+        result = self.db.find_one({"keyword":query})
+        if result != None:
+            # if the keyword is in the dataset, then return the list of titles that contain that keyword
+            return result["keyword"][1]
         else:
-            # if the keyword is not in the self.inverted_keywords, then change the query to the nearest keyword
-            # and return the list of files that contain that keyword using Levenshtein distance            
+            # if the keyword is not in the dataset, then change the query to the nearest keyword
+            # using Levenshtein distance and return the list of titles that contain that keyword
 
             min_distance = self.min_distance
+            keywords = self.db.find({}, {"_id": 0, "keyword": 1})
             nearest_keyword = ""
-            for keyword in self.inverted_keywords:
+            for keyword in keywords:
+                keyword = keyword["keyword"]
                 distance = self.levenshtein_distance(query, keyword)
                 if (distance < min_distance):
                     min_distance = distance
                     nearest_keyword = keyword
 
-            return self.inverted_keywords[nearest_keyword]
+
+            result = self.db.find_one({"keyword":nearest_keyword})
+            return result["keyword"][1]

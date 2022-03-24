@@ -9,13 +9,14 @@ def invert_list(dic):
                 inverted_dic[doc].append((tf, key))
             else:
                 inverted_dic[doc] = [(tf, key)]
-        inverted_dic = {key: sorted(value) for key, value in inverted_dic.items()}
-        inverted_dict = {}
+        inverted_dic = {key.lower(): sorted(value) for key, value in inverted_dic.items()}
+        inverted_dict = []
         for key, value in inverted_dic.items():
             txts = []
             for item in value:
                 txts.append(item[1])
-            inverted_dict[key] = txts
+            # inverted_dict[key] = txts
+            inverted_dict.append({key: txts})
     return inverted_dict
 
 def edit_distance_(s1, s2, n, max_depth):
@@ -32,7 +33,7 @@ def edit_distance_(s1, s2, n, max_depth):
 def edit_distance(s1, s2, max_depth=3):
     return edit_distance_(s1, s2, 0, max_depth)
 
-keywords = {"txt1": [(0.1, "hello"), (0.2, "aaaaaaa")], "txt2": [(0.1, "world"), (0, "hello")], "txt3": [(0.1, "!"), (0.2, "bbbbbbb"), (0.15, "ccccccc"), (0.5, "hello")]}
+keywords = {"txt1": [(0.1, "heLlo"), (0.2, "aaaaaaa")], "txt2": [(0.1, "world"), (0, "hello")], "txt3": [(0.1, "!"), (0.2, "bbbbbbb"), (0.15, "ccccccc"), (0.5, "hello")]}
 inverted_keywords_list = invert_list(keywords)
 print(inverted_keywords_list)
 
