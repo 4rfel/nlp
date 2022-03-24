@@ -20,8 +20,8 @@ def invert_list(dic):
             else:
                 inverted_dic[doc] = [(tf, word)]
 
-    # ordenando com base no tf
-    inverted_dic = {key.lower(): sorted(value) for key, value in inverted_dic.items()}
+    # ordenando de forma decrescente com base no tf
+    inverted_dic = {key.lower(): sorted(value, reverse=True) for key, value in inverted_dic.items()}
 
     # criando o dicionario de keywords no formato desejado {"keyword": (word, [title, title, title])}"}
     inverted_dict = []
@@ -42,6 +42,7 @@ for m in mangas_:
     for word, tf in m["keywords"].items():
         mangas.append((tf, word))
     key[m["title"] + ": " + m["summary"]] = mangas
+
 
 inverted_key = invert_list(key)
 # print(inverted_key)
