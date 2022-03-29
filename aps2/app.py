@@ -15,6 +15,7 @@ def index():
     if 'termos' in request.args.keys():
         query = request.args['termos']
         results = se.search(query)
-        return render_template('index.html', results=results, termos=query)
-    else:
-        return render_template('index.html')
+        if results[1] is not None:
+            query = results[1]
+        return render_template('index.html', results=results[0], termos=query)
+    return render_template('index.html')

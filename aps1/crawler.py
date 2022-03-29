@@ -1,4 +1,3 @@
-from ast import keyword
 import pymongo, certifi, scrapy, urllib
 
 url_sw = "https://gist.github.com/alopes/5358189#file-stopwords-txt"

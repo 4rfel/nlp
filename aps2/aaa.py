@@ -1,22 +1,26 @@
 # create a dictionary of the inverted index
 def invert_list(dic):
     inverted_dic = {}
-    for key, value in dic.items():
+    # montando a lista invertida
+    for word, value in dic.items():
         for item in value:
             tf = item[0]
             doc = item[1]
             if doc in inverted_dic:
-                inverted_dic[doc].append((tf, key))
+                inverted_dic[doc].append((tf, word))
             else:
-                inverted_dic[doc] = [(tf, key)]
-        inverted_dic = {key.lower(): sorted(value) for key, value in inverted_dic.items()}
-        inverted_dict = []
-        for key, value in inverted_dic.items():
-            txts = []
-            for item in value:
-                txts.append(item[1])
-            # inverted_dict[key] = txts
-            inverted_dict.append({key: txts})
+                inverted_dic[doc] = [(tf, word)]
+
+    # ordenando de forma decrescente com base no tf
+    inverted_dic = {key.lower(): sorted(value, reverse=True) for key, value in inverted_dic.items()}
+
+    # criando o dicionario de keywords no formato desejado {"keyword": (word, [title, title, title])}"}
+    inverted_dict = []
+    for word, value in inverted_dic.items():
+        titles = []
+        for item in value:
+            titles.append(item[1])
+        inverted_dict.append({"keyword": (word, titles)})
     return inverted_dict
 
 def edit_distance_(s1, s2, n, max_depth):
@@ -33,7 +37,7 @@ def edit_distance_(s1, s2, n, max_depth):
 def edit_distance(s1, s2, max_depth=3):
     return edit_distance_(s1, s2, 0, max_depth)
 
-keywords = {"txt1": [(0.1, "heLlo"), (0.2, "aaaaaaa")], "txt2": [(0.1, "world"), (0, "hello")], "txt3": [(0.1, "!"), (0.2, "bbbbbbb"), (0.15, "ccccccc"), (0.5, "hello")]}
+keywords = {"txt1": [(1, "aaa"), (2, "bbb"), (3, "ccc")], "txt2": [(3, "aaa"), (1, "bbb"), (2, "ccc")], "txt3": [(2, "aaa"), (3, "bbb"), (1, "ccc")]}
 inverted_keywords_list = invert_list(keywords)
 print(inverted_keywords_list)
 
