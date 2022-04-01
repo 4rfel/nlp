@@ -7,3 +7,7 @@ o criterio de ordenacao foi a quantidade de vezes que a keyword procurada foi en
 
 
 o arquivo keywords.py foi utilizado para gerar a lista invertida e salvar eles num mongodb
+
+
+CASO DE PANICO
+email: rafaels6@al.insper.edu.br
