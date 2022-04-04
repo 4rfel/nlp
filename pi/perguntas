@@ -1,0 +1,17 @@
+(2 pontos) Levantamento de hipóteses: todas as hipóteses relevantes foram testadas, de acordo com as análises exploratórias?
+    Há hipóteses que não fazem sentido para o problema (exemplo: “clientes insatisfeitos viajam para Marte?”)? 
+
+(2 pontos) Teste das hipóteses: usamos as metodologias corretas? As figuras estão claras? Os códigos estão corretos?
+
+(2 pontos) Conclusões: elas estão baseadas nos dados gerados?
+(2 pontos) Apresentação (texto): os textos estão claros, organizados e concisos? Eles poderiam ser lidos
+    por uma pessoa que não entende de matemática ou de computação (dica: tente escrever o texto para uma
+    pessoa que acabou de ingressar no primeiro ano do seu curso pense em você no passado)
+
+(2 pontos) Apresentação (figuras): os tipos de figuras usados estão adequados à mensagem que vai ser passada?
+    Os eixos têm rótulos claros? O título das figuras guia o leitor em sua interpretação? As cores são consistentes
+    entre as figuras do trabalho (por exemplo: “vermelho” sempre significa “cliente insatisfeito”)? A figura poderia
+    ser destacada do trabalho escrito e, ainda assim, faria sentido?
+    
+(2 pontos) (bônus para quem fizer a nota do trabalho ainda é, no máximo, 10!) É possível confirmar/desconfirmar o que
+    você encontrou com a análise de textos através da análise de dados objetivos e numéricos também presentes no banco de dados?
